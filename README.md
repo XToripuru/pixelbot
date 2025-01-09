@@ -1,4 +1,4 @@
-# PixelBot
+# PixelBot v1.0.1
 
 Implementation of an API compliant pixelpixel.io bot.
 
@@ -39,13 +39,13 @@ You can use the following command-line arguments to customize the app's behavior
 ### Example Command
 
 ```bash
-node app.js --pk 0xYourWalletAddress --key YourApiKey --position 50,50 --image ./image.png
+node client.js --pk 0xYourWalletAddress --key YourApiKey --position 50,50 --image ./image.png
 ```
 
 ### Notes
 
 - **Position (`--position`)**: Specify the top-left corner (x, y) where the image should be placed on the canvas.
-- **Image Path (`--image`)**: Provide a valid path to the image file (supports `.png`, `.jpg`, etc.).
+- **Image Path (`--image`)**: Provide a valid path to the image file (supports `.png`).
 - Ensure the image exists and is accessible.
 
 ---

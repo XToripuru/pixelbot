@@ -56,6 +56,9 @@ async function connectWebSocket() {
     height: imageHeight,
     channels,
   } = await getImageRGBContent(options.image);
+  if (channels != 4) {
+    console.log("Image must be in RGBA format");
+  }
 
   console.log("Connecting");
 
@@ -76,9 +79,8 @@ async function connectWebSocket() {
   };
 
   const drawImage = (x, y) => {
-    console.log(x, y);
     if (pixels == 0) {
-      setTimeout(() => drawImage(x, y), 1000);
+      setTimeout(() => drawImage(x, y), 5000);
       return;
     }
     const canvasIdx = 3 * (1000 * (setY + y) + (setX + x));
@@ -122,7 +124,7 @@ async function connectWebSocket() {
         }
       }
       drawImage(x, y);
-    }, 1000);
+    }, 100);
   };
 
   const cbt = {
