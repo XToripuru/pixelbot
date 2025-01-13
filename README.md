@@ -1,6 +1,6 @@
-# PixelBot v1.0.1
+# PixelBot v1.1.0
 
-Implementation of an API compliant pixelpixel.io bot.
+Implementation of an pixelpixel.io bot using [pixepixel API](https://github.com/XToripuru/pixepixel).
 
 ## Prerequisites
 
@@ -14,6 +14,7 @@ Implementation of an API compliant pixelpixel.io bot.
 
 Dependencies:
 
+- `pixelpixel`: Official Pixelpixel API library.
 - `ws`: WebSocket client library.
 - `sharp`: For image processing and retrieving pixel data.
 - `commander`: For command-line argument parsing.
@@ -29,7 +30,7 @@ You can use the following command-line arguments to customize the app's behavior
 
 | Option                   | Description                                       | Example                       |
 | ------------------------ | ------------------------------------------------- | ----------------------------- |
-| `--pk <public key>`      | Your wallet address                               | `--pk 0x12345abcde`           |
+| `--pk <public key>`      | Your wallet address                               | `--pk 12345abcde`             |
 | `--key <api key>`        | Your API key for authentication                   | `--key abcdef12345`           |
 | `-p, --position <x>,<y>` | Top-left corner of the image on the canvas (x, y) | `--position 100,200`          |
 | `-i, --image <path>`     | Path to the image file                            | `--image ./path/to/image.png` |
@@ -39,34 +40,13 @@ You can use the following command-line arguments to customize the app's behavior
 ### Example Command
 
 ```bash
-node client.js --pk 0xYourWalletAddress --key YourApiKey --position 50,50 --image ./image.png
+node index.js --pk YourWalletAddress --key YourApiKey --position 50,50 --image ./flying-eye.png
 ```
 
-### Notes
+## How it works?
 
-- **Position (`--position`)**: Specify the top-left corner (x, y) where the image should be placed on the canvas.
-- **Image Path (`--image`)**: Provide a valid path to the image file (supports `.png`).
-- Ensure the image exists and is accessible.
-
----
-
-## How It Works
-
-1. **Image Loading**:
-
-   - Loads the specified image using the `sharp` library.
-   - Extracts RGBA pixel data and dimensions.
-
-2. **WebSocket Connection**:
-
-   - Connects to `wss://pixelpixel.io/connect`.
-   - Authenticates using the provided public key and API key.
-   - Receives canvas updates and pixel placement permissions.
-
-3. **Drawing Logic**:
-   - Iterates over the image pixel-by-pixel.
-   - Skips transparent or redundant pixels already present on the canvas.
-   - Sends pixel placement commands to the server.
+It takes an image and a position and it draws that image on that position on the pixepixel's canvas. This process consumes available pixels from your account as usual. After finishing the image the bot
+will try to draw it again thus protecting from intruders.
 
 ## Notes
 
