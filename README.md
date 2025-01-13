@@ -1,6 +1,6 @@
-# PixelBot v1.1.0
+# PixelBot v1.1.1
 
-Implementation of an pixelpixel.io bot using [pixepixel API](https://github.com/XToripuru/pixepixel).
+Implementation of a pixelpixel.io bot using [pixepixel API](https://github.com/XToripuru/pixepixel).
 
 ## Prerequisites
 
